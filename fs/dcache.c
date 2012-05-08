@@ -2515,6 +2515,10 @@ static int prepend_path(const struct path *path,
 	bool slash = false;
 	int error = 0;
 
+<<<<<<< HEAD
+=======
+	br_read_lock(&vfsmount_lock);
+>>>>>>> a255431... brlocks/lglocks: API cleanups
 	while (dentry != root->dentry || vfsmnt != root->mnt) {
 		struct dentry * parent;
 
@@ -2552,6 +2556,11 @@ static int prepend_path(const struct path *path,
 	if (!error && !slash)
 		error = prepend(buffer, buflen, "/", 1);
 
+<<<<<<< HEAD
+=======
+out:
+	br_read_unlock(&vfsmount_lock);
+>>>>>>> a255431... brlocks/lglocks: API cleanups
 	return error;
 
 global_root:
